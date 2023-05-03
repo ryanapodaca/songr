@@ -22,7 +22,7 @@ public class Controllers {
     }
 
     @GetMapping("/albums")
-    public ArrayList<Album> getAlbums(){
+    public String getAlbums(Model m){
         ArrayList<Album> list = new ArrayList<>();
         Album album1 = new Album("Room for Squares", "John Mayer");
         Album album2 = new Album("Try", "John Mayer");
@@ -30,6 +30,7 @@ public class Controllers {
         list.add(album1);
         list.add(album2);
         list.add(album3);
-        return list;
+        m.addAttribute("albumList", list);
+        return "./resources/templates/albums.html";
     }
 }
