@@ -1,18 +1,29 @@
 package com.spacesongr.songr;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Album {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    long id;
     String title;
     String artist;
     int songCount;
     int lengthSeconds;
     String imageURL;
 
+    protected Album() {}
+
     public Album(String title, String artist) {
         this.title = title;
         this.artist = artist;
-        this.songCount = songCount;
-        this.lengthSeconds = lengthSeconds;
-        this.imageURL = imageURL;
+//        this.songCount = songCount;
+//        this.lengthSeconds = lengthSeconds;
+//        this.imageURL = imageURL;
     }
 
     public String getTitle() {
