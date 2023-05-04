@@ -7,6 +7,24 @@
   <title>Document</title>
 </head>
 <body>
-<h1 th:text="${}">albums here</h1>
+<h1>Albums</h1>
+<ul th:each="a : ${albums}"></ul>
+<!--form to create new albums-->
+<form action="/album/add" method="POST">
+  <fieldset>
+    <legend>Add album</legend>
+    <label>Album Title</label>
+    <input type="text" name="title">
+    <label>Artist</label>
+    <input type="text" name="artist">
+    <label>Song Count</label>
+    <input type="text" name="song count">
+    <label>Length in Seconds</label>
+    <input type="text" name="length in seconds">
+    <label>Image URL</label>
+    <input type="text" name="imageUrl">
+    <input type="submit" value="Add Album">
+  </fieldset>
+</form>
 </body>
 </html>
