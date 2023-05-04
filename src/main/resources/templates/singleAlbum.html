@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<h1>Albums</h1>
+<ul th:text="${album}"></ul>
+<!--form to create new stores-->
+<form action="/album/update" method="POST">
+    <fieldset>
+        <legend>Update album</legend>
+        <label>Album Title</label>
+        <input type="text" name="title">
+        <label>Artist</label>
+        <input type="text" name="artist">
+        <label>Song Count</label>
+        <input type="text" name="song count">
+        <label>Length in Seconds</label>
+        <input type="text" name="length in seconds">
+        <label>Image URL</label>
+        <input type="text" name="imageUrl">
+        <input type="submit" value="Update Album">
+    </fieldset>
+</form>
+<form action="/song/add" method="POST">
+    <fieldset>
+        <legend>Add songs to this album</legend>
+        <label>Song Title</label>
+        <input type="text" name="title">
+        <lable>Length in Seconds</lable>
+        <input type="text" name="length">
+        <lable>Track Number</lable>
+        <input type="text" name="trackNumber">
+        <lable>Album</lable>
+        <input type="text" name="album">
+        <input type="hidden" name="album" th:value="${album.title}">
+        <input type="submit" value="add song to album">
+    </fieldset>
+</form>
+</body>
+</html>

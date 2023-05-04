@@ -1,9 +1,8 @@
-package com.spacesongr.songr;
+package com.spacesongr.songr.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Album {
@@ -12,18 +11,30 @@ public class Album {
     long id;
     String title;
     String artist;
-    int songCount;
-    int lengthSeconds;
+    Integer songCount;
+    Integer lengthSeconds;
     String imageURL;
+
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
+    List<Song> songs;
 
     protected Album() {}
 
-    public Album(String title, String artist) {
+    public Album(long id, String title, String artist, Integer songCount, Integer lengthSeconds, String imageURL) {
+        this.id = id;
         this.title = title;
         this.artist = artist;
-//        this.songCount = songCount;
-//        this.lengthSeconds = lengthSeconds;
-//        this.imageURL = imageURL;
+        this.songCount = songCount;
+        this.lengthSeconds = lengthSeconds;
+        this.imageURL = imageURL;
+    }
+
+    public Album(String title, String artist, Integer songCount, Integer lengthSeconds, String imageURL) {
+        this.title = title;
+        this.artist = artist;
+        this.songCount = songCount;
+        this.lengthSeconds = lengthSeconds;
+        this.imageURL = imageURL;
     }
 
     public String getTitle() {
